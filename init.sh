@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -54,7 +54,7 @@ done
 
 ############### Keyboard layout ###############
 if [ "$IS_MACOS" -eq 0 ]; then
-  return 0
+  exit 0
 fi
 
 echo "### Configuring keyboard layout"
