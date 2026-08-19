@@ -1,0 +1,79 @@
+;; Target: macOS, German (QWERTZ) keyboard layout
+;;
+;;   caps_lock  tap  = escape
+;;   caps_lock  hold = full symbol layer (all 25 symbols)
+;;
+;; goku modifier shorthand:
+;;   !S = shift        !E = right_option (AltGr)      !SE = shift + right_option
+;;   !T = left_control ##  = "optional any" on the from-key
+;;
+;; Karabiner names keys by POSITION, not by legend:
+;;   :y = the key labelled Z        :z = the key labelled Y
+;;   :semicolon = Ö    :quote = Ä    :backslash = #
+;;   :open_bracket = Ü :close_bracket = +
+;;   :hyphen = ß       :equal_sign = ´   :slash = -
+
+{
+ :layers {
+          :hold-caps-mode {:key :caps_lock :alone {:key :escape}}
+          }
+
+ :main [
+
+        ;; ------------------------------------------------------------------
+        ;; caps_lock held — the complete layer
+        ;; ------------------------------------------------------------------
+        {:des "caps: mnemonic symbol layer (German macOS layout)"
+         :rules [:hold-caps-mode
+
+                 ;; ---- Delimiters: geometric, opener left / closer right ----
+                 [:##u         :!E5]                          ;; [
+                 [:##i         :!E6]                          ;; ]
+                 [:##j         :!S8]                          ;; (
+                 [:##k         :!S9]                          ;; )
+                 [:##m         :!E8]                          ;; {
+                 [:##comma     :!E9]                          ;; }
+
+                 ;; ---- Mnemonic letters, right hand ----
+                 [:##p         :!E7]                          ;; |  Pipe
+                 [:##n         [:!En :spacebar]]              ;; ~  Tilde     (AltGr+n, dead key + space)
+                 [:##h         :backslash]                    ;; #  Hash
+                 [:##o         :!El]                          ;; @  round shape
+
+                 ;; ---- Mnemonic letters, left hand (also on Ä below) ----
+                 [:##s         :!S7]                          ;; /  Slash
+                 [:##b         :!SE7]                         ;; \  Backslash
+                 [:##d         :!S4]                          ;; $  Dollar
+                 [:##e         :!S1]                          ;; !  Exclamation
+                 [:##f         :!Shyphen]                     ;; ?  Fragezeichen
+                 [:##c         [:non_us_backslash :spacebar]] ;; ^  Caret     (dead key + space)
+                 [:##x         :!Sclose_bracket]              ;; *  times
+                 [:##t         :close_bracket]                ;; +  cross shape
+                 [:##w         :!S5]                          ;; %
+                 [:##g         :!S6]                          ;; &
+
+                 ;; ---- Positional leftovers (no mnemonic exists) ----
+                 [:##l         :!S0]                          ;; =
+                 [:##period    :!S2]                          ;; "
+                 [:##slash     :!Sbackslash]                  ;; '   (on the German "-" key)
+                 [:##semicolon [:!Sequal_sign :spacebar]]     ;; `   (on the German "Ö" key, dead key + space)
+
+                 ;; ---- Terminal ----
+                 [:##spacebar  :!Tb]                          ;; tmux prefix
+
+                 ;; ---- Apps ----
+                 [:##1 "open -a 'Helium'"]
+                 [:##2 "open -a 'Obsidian'"]
+                 [:##3 "open -a 'Ghostty'"]
+                 [:##4 "open -a 'Mail'"]
+                 [:##5 "open -a 'Calendar'"]
+                 [:##6 "open -a 'Visual Studio Code'"]
+                 [:##7 "open -a 'WhatsApp'"]
+
+                 ;; free: :q :a :r  :y (German Z)  :z (German Y)
+                 ;;       :8 :9 :0 :hyphen :equal_sign
+                 ;;       :open_bracket (Ü)  :backslash (#)  :non_us_backslash (<)
+                 ]
+         }
+        ]
+ }
