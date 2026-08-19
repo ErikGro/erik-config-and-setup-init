@@ -1,0 +1,40 @@
+if command -v gls >/dev/null 2>&1; then
+    # 1. macOS with Homebrew coreutils
+    alias l="gls -1al --color -h --group-directories-first"
+elif ls --version >/dev/null 2>&1; then
+    # 2. Standard Linux (GNU ls)
+    alias l="ls -1al --color -h --group-directories-first"
+else
+    # 3. macOS default fallback (BSD ls)
+    alias l="ls -1alG -h"
+fi
+
+if command -v vim >/dev/null 2>&1; then
+    alias v='vim'
+else
+    alias v='vi'
+fi
+
+if command -v bat >/dev/null 2>&1; then
+    alias cat='bat --style=plain'
+    alias c='bat'
+else
+    alias c='cat'
+fi
+
+alias pu='ps -fu $USER --forest'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias -g G='| grep -i'
+alias -g L='| less'
+alias -g C='| wc -l'
+
+alias gits="git branch --show-current && git status --short"
+alias gita="git add -A"
+alias gitp="git pull"
+alias gitc="git commit -m"
+alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
