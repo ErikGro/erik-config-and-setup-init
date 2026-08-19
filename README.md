@@ -8,7 +8,6 @@ This repository contains a script to setup a new machine with all my opinionated
 Following programs are expected to be installed and setup, before running the `init.sh` script:
 - [Karabiner](https://karabiner-elements.pqrs.org/)
 - [Homebrew](https://brew.sh/)
-- [Goku](https://github.com/yqrashawn/GokuRakuJoudo)
 - Vim 9
 
 ## Initialization
